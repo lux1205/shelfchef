@@ -1,14 +1,22 @@
 from flask import Flask, request, jsonify, render_template
+from dotenv import load_dotenv
+import os
 import requests
 
 app = Flask(__name__)
+load_dotenv()
 
-# Your Spoonacular API Key
-SPOONACULAR_API_KEY = "ea02f42f32384440ac891d33a223fe5c"
+SPOONACULAR_API_KEY = os.environ.get('SPOONACULAR_API_KEY')
 
-@app.route("/")
+@app.route("/recipe")
 def home():
     return render_template("recipe.html")
+@app.route("/chatbot")
+def chatbot():
+    return render_template("chatbot.html")
+@app.route("/home")
+def home():
+    return render_template("home.html")
 
 @app.route("/view_recipes", methods=["GET"])
 def view_recipes():
