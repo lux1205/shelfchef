@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ShelfChef</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body */
+        body {
+            background-color: #eeba86;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: #f8cf89;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: orange;
+        }
+
+        .user-icon {
+            font-size: 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #f3bc6b;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #000;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #f3bc6b;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(255, 188, 71, 0.2);
+        }
+
+        .about-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* Image Container */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .circle-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .large {
+            width: 180px;
+            height: 180px;
+        }
+
+        /* Hover Effect */
+        .circle-img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Description Box */
+        .description {
+            background-color: #ffe4b5;
+            padding: 15px;
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .description:hover {
+            background-color: #ffdead;
+            transform: translateY(-5px);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: orange;
+            color: rgb(63, 42, 0);
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: darkorange;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">SHELF<span>CHEF</span></h1>
+        <div class="user-icon">👤</div>
+    </header>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('grocery') }}">Grocery Tracker</a>
+        <a href="{{ url_for('meal') }}">Meal Planning</a>
+        <a href="{{ url_for('recipe') }}">Recipe</a>
+        <a href="{{ url_for('chatbot') }}">Chatbot</a>
+        <a href="{{ url_for('grocery_list') }}">Grocery List</a>
+    </nav>
+    
+    
+    <section class="about-section">
+        <h2>ABOUT US</h2>
+        <p class="tagline">"Smart cooking starts with ShelfChef!"</p>
+
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='images/grocerylist.jpg') }}" alt="Healthy Food" class="circle-img">
+            <img src="{{ url_for('static', filename='images/meal_planner.jpg') }}" alt="Spices" class="circle-img large">
+            <img src="{{ url_for('static', filename='images/recipe.jpg') }}" alt="Grocery Cart" class="circle-img">
+            
+        </div>
+
+        <div class="description">
+            <p><strong>ShelfChef: Your Kitchen Companion</strong></p>
+            <p>
+                Simplify meal planning, grocery shopping, and cooking with ShelfChef.<br>
+                Our platform ensures a seamless cooking experience, reducing waste and saving time.
+            </p>
+        </div>
+
+        <div class="buttons">
+            <a href="recipe.html" class="btn">RECIPE VIEW</a>
+            <a href="grocery.html" class="btn">GROCERY TRACKER</a>
+            <a href="mealplanner.html" class="btn">MEALPLANNER</a>
+        </div>
+    </section>

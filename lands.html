@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShelfChef</title>
+    <style>
+        /* General Styles */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+          }
+          body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color:rgb(255, 165, 123);
+          }
+      
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(251, 235, 211);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffd966;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .logo {
+            color: #333;
+        }
+
+        header .user-icon {
+            font-size: 24px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav {
+            background-color: #ffcc66;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #ffaa00;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h1 {
+            color: #333;
+            font-size: 32px;
+        }
+
+        .welcome-section p {
+            color: #666;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .intro-card {
+            background-color: #fff4d6;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 70%;
+        }
+
+        .intro-card h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .intro-card p {
+            color: #555;
+        }
+
+        .section-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+
+        .section img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .section-content {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .section-content h2 {
+            color: #ff9900;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .section-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Left-aligned Section */
+        .left-section {
+            flex-direction: row;
+        }
+
+        /* Right-aligned Section */
+        .right-section {
+            flex-direction: row-reverse;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #ffd966;
+            padding: 10px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <script src="https://www.chatbase.co/chatbot-iframe/kdorC0WE_cWvnd5kLsfcY"></script>
+    <div id="particles-js"></div>
+    <header>
+        <div class="logo">SHELFCHEF</div>
+        <div class="user-icon">👤</div>
+    </header>
+    <nav>
+        <a href="lands.html">Home</a>
+        <a href="/about">About</a>
+        <a href="/grocery">Grocery Tracker</a>
+        <a href="/meal">Meal Planning</a>
+        <a href="/recipe">Recipe</a>
+        <a href="/chatbot">Chatbot</a>
+    </nav>
+
+    <div class="content">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>WELCOME TO SHELFCHEF!</h1>
+            <p>"Smart cooking starts with ShelfChef!"</p>
+        </div>
+
+        <!-- Intro Card -->
+        <div class="intro-card">
+            <h2>ShelfChef: Your Kitchen Companion</h2>
+            <p>Simplify meal planning, grocery shopping, and cooking with ShelfChef.</p>
+        </div>
+
+        <!-- Sections -->
+        <div class="section-container">
+            <!-- Left Section -->
+            <div class="section left-section">
+                <img src={{ url_for('static', filename='images/food.jpg' ) }} alt="Grocery Tracker">
+                <div class="section-content">
+                    <h2>GROCERY TRACKER</h2>
+                    <p>🔔 Expiry Alerts – No More Wasted Food! <br>
+                        Get notified before your groceries expire and turn them into delicious meals. Save money, reduce waste, and cook smarter with ShelfChef! 🥗</p>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="section right-section">
+                <img src={{ url_for('static', filename='images/meal planner.jpg' ) }} alt="Grocery Tracker">
+                <div class="section-content">
+                    <h2>MEAL PLANNER</h2>
+                    <p>🍽️ Smart Meal Planning with ShelfChef!<br>
+                        Get personalized meal ideas, use what’s in your pantry, and reduce waste—effortless cooking made simple! ✅</p>
+                </div>
+            </div>
+
+            <!-- Left Section -->
+            <div class="section left-section">
+                <img src={{ url_for('static', filename='images/recipe.jpg' ) }} alt="Grocery Tracker">
+                <div class="section-content">
+                    <h2>RECIPE VIEW</h2>
+                    <p>🔍 Find the Perfect Recipe Instantly!<br>
+                        Search recipes based on your ingredients and preferences. Quick, easy, and delicious—cooking made smarter with ShelfChef! ✨🍳</p>
+                </div>
+            </div>
+            <div class="section right-section">
+                <img src={{ url_for('static', filename='images/chatbot.jpg' ) }} alt="Grocery Tracker">
+                <div class="section-content">
+                    <h2>CHATBOT</h2>
+                    <p>🤖 Your Smart Cooking Assistant!<br>
+                        Need meal ideas or grocery tips? Ask ShelfChef’s AI Chatbot! Get instant recipe suggestions, expiry alerts, and smart cooking advice—just a message away!
+                        🍽✨</p>
+                </div>
+            </div>
+            <div class="section left-section">
+                <img src={{ url_for('static', filename='images/grocerylist.jpg' ) }} alt="Grocery Tracker">
+                <div class="section-content">
+                    <h2>GROCERY LIST</h2>
+                    <p>🛒 Auto-Generate Your Grocery List!<br>
+                        Select recipes, and ShelfChef will instantly create a smart grocery list—only what you need, nothing you don’t! Shop smarter, cook better! ✅🍽</p>
+                </div>
+            </div>
+            <footer style="background-color: #ffd966; padding: 20px; text-align: center; color: #333; font-size: 14px; margin-top: 20px; border-top: 4px solid #ff9900;">
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; padding-bottom: 10px;">
+                    <!-- About ShelfChef -->
+                    <div>
+                        <h3 style="font-size: 18px; color: #ff9900; margin-bottom: 10px;">About ShelfChef</h3>
+                        <p style="max-width: 250px; line-height: 1.5; margin: 0 auto;">
+                            ShelfChef simplifies meal planning, grocery tracking, and cooking. Your go-to app for smarter, waste-free cooking.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h3 style="font-size: 18px; color: #ff9900; margin-bottom: 10px;">Quick Links</h3>
+                        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                            <li><a href="landing.html" style="text-decoration: none; color: #333;">Home</a></li>
+                            <li><a href="about.html" style="text-decoration: none; color: #333;">About</a></li>
+                            <li><a href="grocery.html" style="text-decoration: none; color: #333;">Grocery Tracker</a></li>
+                            <li><a href="recipe.html" style="text-decoration: none; color: #333;">Recipes</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Us -->
+                    <div>
+                        <h3 style="font-size: 18px; color: #ff9900; margin-bottom: 10px;">Contact Us</h3>
+                        <p style="margin: 0;">
+                            📧 Email: <a href="mailto:support@shelfchef.com" style="text-decoration: none; color: #333;">support@shelfchef.com</a>
+                        </p>
+                        <p style="margin: 5px 0;">
+                            📞 Phone: <a href="tel:+1234567890" style="text-decoration: none; color: #333;">+123-456-7890</a>
+                        </p>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div>
+                        <h3 style="font-size: 18px; color: #ff9900; margin-bottom: 10px;">Follow Us</h3>
+                        <div style="font-size: 20px;">
+                            <a href="https://facebook.com" target="_blank" style="margin: 0 10px; color: #333;">🌐 Facebook</a>
+                            <a href="https://twitter.com" target="_blank" style="margin: 0 10px; color: #333;">🐦 Twitter</a>
+                            <a href="https://instagram.com" target="_blank" style="margin: 0 10px; color: #333;">📸 Instagram</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #ffcc66; padding-top: 10px; font-size: 12px;">
+                    &copy; 2025 ShelfChef. All Rights Reserved.
+                </div>
+            </footer>
+            <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+            <script src="js/landing.js"></script>
+
+</body>
+
+</html>

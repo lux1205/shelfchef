@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Viewer</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: rgb(252, 243, 229);
+            color: #444;
+        }
+        
+    
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: rgb(253, 170, 26);
+            margin-bottom: 30px;
+        }
+    
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 20px;
+            color: rgb(90, 90, 90);
+        }
+    
+        input, select, button {
+            margin-top: 10px;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid rgb(218, 218, 218);
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+    
+        input:focus, select:focus {
+            border-color: rgb(255, 189, 76);
+            box-shadow: 0 0 6px rgba(255, 189, 76, 0.6);
+        }
+    
+        button {
+            background-color: rgb(255, 162, 76);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+    
+        button:hover {
+            background-color: rgb(255, 133, 51);
+            transform: scale(1.05);
+        }
+    
+        #recipes {
+            margin-top: 30px;
+        }
+    
+        .recipe {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        .recipe:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+    
+        .recipe h2 {
+            font-size: 1.8rem;
+            color: rgb(80, 80, 80);
+            margin-bottom: 10px;
+        }
+    
+        .recipe img {
+            display: block;
+            margin: 15px 0;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    
+        .recipe a {
+            text-decoration: none;
+            color: rgb(253, 170, 26);
+            font-weight: bold;
+        }
+    
+        .recipe a:hover {
+            text-decoration: underline;
+            color: rgb(255, 133, 51);
+        }
+    
+        /* Centering the form */
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+    
+            h1 {
+                font-size: 2rem;
+            }
+    
+            form {
+                padding: 20px;
+            }
+    
+            .recipe h2 {
+                font-size: 1.5rem;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            input, select, button {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+    
+            h1 {
+                font-size: 1.8rem;
+            }
+    
+            form {
+                padding: 15px;
+            }
+    
+            .recipe h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Recipe Viewer</h1>
+    <label for="ingredients">Enter Ingredients (comma-separated):</label>
+    <input type="text" id="ingredients" placeholder="e.g., tomato, rice, chicken">
+
+    <p>Select your preference:</p>
+    <label for="diet">Diet:</label>
+    <select id="diet">
+        <option value="">No Preference</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="">Non-Vegetarian</option>
+    </select>
+
+    <label for="cuisine">Cuisine:</label>
+    <select id="cuisine">
+        <option value="">Any</option>
+        <option value="indian">Indian</option>
+        <option value="chinese">Chinese</option>
+        <option value="italian">Italian</option>
+        <option value="mexican">Mexican</option>
+    </select>
+
+    <button onclick="fetchRecipes()">View Recipes</button>
+
+    <div id="recipes"></div>
+
+    <script>
+        function fetchRecipes() {
+            const ingredients = document.getElementById("ingredients").value;
+            const diet = document.getElementById("diet").value;
+            const cuisine = document.getElementById("cuisine").value;
+
+            if (!ingredients) {
+                alert("Please enter some ingredients.");
+                return;
+            }
+
+            fetch(`/view_recipes?ingredients=${ingredients}&diet=${diet}&cuisine=${cuisine}`)
+                .then(response => response.json())
+                .then(data => {
+                    const recipesDiv = document.getElementById("recipes");
+                    recipesDiv.innerHTML = "";
+
+                    if (data.error) {
+                        recipesDiv.textContent = data.error;
+                        return;
+                    }
+
+                    data.forEach(recipe => {
+                        const recipeDiv = document.createElement("div");
+                        recipeDiv.classList.add("recipe");
+
+                        recipeDiv.innerHTML = `
+                            <h2>${recipe.title}</h2>
+                            <img src="${recipe.image}" alt="${recipe.title}" width="200">
+                            <p><a href="https://spoonacular.com/recipes/${recipe.title
+                                .replace(/ /g, "-")
+                                .toLowerCase()}-${recipe.id}" target="_blank">View Full Recipe</a></p>
+                        `;
+
+                        recipesDiv.appendChild(recipeDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching recipes:", error);
+                });
+        }
+    </script>
+</body>
+</html>
